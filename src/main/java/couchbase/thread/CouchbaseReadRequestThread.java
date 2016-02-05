@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by msaidi on 2/5/16.
  */
-public class ReadRequestThread implements Runnable {
+public class CouchbaseReadRequestThread implements Runnable {
 
     private final CountDownLatch countDownLatch;
     private final Thread thread;
@@ -25,7 +25,7 @@ public class ReadRequestThread implements Runnable {
     private CouchbaseClient client;
     private View view;
 
-    public ReadRequestThread(CountDownLatch countDownLatch, ConcurrentHashMap<String, Object> cbConfigMap, ConcurrentHashMap<Integer, Long> map, int id) {
+    public CouchbaseReadRequestThread(CountDownLatch countDownLatch, ConcurrentHashMap<String, Object> cbConfigMap, ConcurrentHashMap<Integer, Long> map, int id) {
         this.countDownLatch = countDownLatch;
         thread = new Thread(this, "ReadRequestThread");
         this.cbConfigMap = cbConfigMap;

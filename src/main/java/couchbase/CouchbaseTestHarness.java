@@ -1,7 +1,7 @@
 package couchbase;
 
 import com.google.gson.Gson;
-import couchbase.thread.ReadRequestThread;
+import couchbase.thread.CouchbaseReadRequestThread;
 
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -75,7 +75,7 @@ public class CouchbaseTestHarness {
                 long start = System.currentTimeMillis();
                 for (int i = 0; i < readsPerSecond; i++) {
                     //new ReadRequestThread(countDownLatch, config, callTimes, (rt * messagesPerSecond) + i);
-                    new ReadRequestThread(countDownLatch, config_map, callTimes, (rt * messagesPerSecond) + i);
+                    new CouchbaseReadRequestThread(countDownLatch, config_map, callTimes, (rt * messagesPerSecond) + i);
                 }
                 for (int i = readsPerSecond; i < messagesPerSecond; i++) {
                     System.out.println("Implement write request thread");
