@@ -106,6 +106,10 @@ public class MySQLConfiguration extends Configuration {
         return concurrentHashMap;
     }
 
+    public String getWorkloadType() {
+        return null;
+    }
+
     public static class InsertEntry {
         private String key;
         private String sessionID;

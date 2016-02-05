@@ -10,6 +10,7 @@ public class Configuration {
     private int readsPerSecond;
     private int writesPerSecond;
     private String outputFileName;
+    private String workloadType;
 
     public int getIterations() {
         return iterations;
@@ -52,4 +53,5 @@ public class Configuration {
 
         return concurrentHashMap;
     }
+
 }
