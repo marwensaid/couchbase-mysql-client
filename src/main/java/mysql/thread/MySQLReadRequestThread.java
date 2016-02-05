@@ -12,7 +12,6 @@ import java.util.concurrent.CountDownLatch;
  * Created by msaidi on 2/5/16.
  */
 public class MySQLReadRequestThread implements Runnable {
-    private final Thread thread;
     private final CountDownLatch countDownLatch;
     private final ConcurrentHashMap<String, Object> cbConfigMap;
     private final ConcurrentHashMap<Integer, Long> map;
@@ -22,7 +21,7 @@ public class MySQLReadRequestThread implements Runnable {
 
     public MySQLReadRequestThread(CountDownLatch countDownLatch, ConcurrentHashMap<String, Object> cbConfigMap, ConcurrentHashMap<Integer, Long> map, int id) {
         this.countDownLatch = countDownLatch;
-        thread = new Thread(this, "ReadRequestThread");
+        Thread thread = new Thread(this, "ReadRequestThread");
         this.cbConfigMap = cbConfigMap;
         this.map = map;
         this.id = id;

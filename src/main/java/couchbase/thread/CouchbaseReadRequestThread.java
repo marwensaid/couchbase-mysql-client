@@ -17,17 +17,13 @@ import java.util.concurrent.TimeUnit;
 public class CouchbaseReadRequestThread implements Runnable {
 
     private final CountDownLatch countDownLatch;
-    private final Thread thread;
     private final ConcurrentHashMap<String, Object> cbConfigMap;
     private final ConcurrentHashMap<Integer, Long> map;
     private final int id;
-    private Query query;
-    private CouchbaseClient client;
-    private View view;
 
     public CouchbaseReadRequestThread(CountDownLatch countDownLatch, ConcurrentHashMap<String, Object> cbConfigMap, ConcurrentHashMap<Integer, Long> map, int id) {
         this.countDownLatch = countDownLatch;
-        thread = new Thread(this, "ReadRequestThread");
+        Thread thread = new Thread(this, "ReadRequestThread");
         this.cbConfigMap = cbConfigMap;
         this.map = map;
         this.id = id;
@@ -37,9 +33,9 @@ public class CouchbaseReadRequestThread implements Runnable {
     public void run() {
         long startTime = 0;
         long endTime = 0;
-        this.client = generateClient();
-        this.query = generateQuery();
-        this.view = generateView(client);
+        CouchbaseClient client = generateClient();
+        Query query = generateQuery();
+        View view = generateView(client);
 
         try {
             startTime = System.currentTimeMillis();
