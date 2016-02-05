@@ -17,4 +17,8 @@ public class CouchbaseTestHarness {
     private void init(String fileName) {
 
     }
+
+    public void run() {
+
+    }
 }
