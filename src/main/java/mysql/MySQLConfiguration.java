@@ -18,6 +18,7 @@ public class MySQLConfiguration extends Configuration {
     private String readQuery = null;
     private String createTable = null;
     private String dropTable = null;
+    private String workloadType;
 
     private List<InsertEntry> insertEntries;
 
@@ -93,6 +94,14 @@ public class MySQLConfiguration extends Configuration {
         this.insertEntries = insertEntries;
     }
 
+    public String getWorkloadType() {
+        return workloadType;
+    }
+
+    public void setWorkloadType(String workloadType) {
+        this.workloadType = workloadType;
+    }
+
     public ConcurrentHashMap<String, Object> generateConcurrentHashMap() {
         ConcurrentHashMap<String, Object> concurrentHashMap = new ConcurrentHashMap<String, Object>(super.generateConcurrentHashMap());
         concurrentHashMap.put("userName", userName);
@@ -104,10 +113,6 @@ public class MySQLConfiguration extends Configuration {
         concurrentHashMap.put("createTable", createTable);
         concurrentHashMap.put("dropTable", dropTable);
         return concurrentHashMap;
-    }
-
-    public String getWorkloadType() {
-        return null;
     }
 
     public static class InsertEntry {
